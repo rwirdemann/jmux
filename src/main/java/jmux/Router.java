@@ -13,8 +13,10 @@ public class Router {
         this.handler = new ArrayList<>();
     }
 
-    public void handleFunc(String path, HttpHandler httpHandler) {
-        this.handler.add(new Handler(path, httpHandler));
+    public Handler handleFunc(String path, HttpHandler httpHandler){
+        Handler e = new Handler(path, httpHandler);
+        this.handler.add(e);
+        return e;
     }
 
     public List<Handler> getHandler() {

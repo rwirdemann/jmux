@@ -10,7 +10,7 @@ public class Server {
     public void listenAndServer(int port, Router r) throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress("localhost", port), 0);
         for (Handler h : r.getHandler()) {
-            server.createContext(h.getPath(), h.getHttpHandler());
+            server.createContext(h.getPath(), h);
         }
         server.setExecutor(Executors.newFixedThreadPool(10));
         server.start();

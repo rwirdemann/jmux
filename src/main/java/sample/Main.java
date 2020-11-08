@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         Router r = new Router();
-        r.handleFunc("/jobs", new CreateJob());
+        r.handleFunc("/jobs", new CreateJob()).methods("POST", "GET");
         Server server = new Server();
         server.listenAndServer(8080, r);
         System.out.println("Server started on port 8080...");
