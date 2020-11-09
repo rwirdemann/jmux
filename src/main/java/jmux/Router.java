@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Router implements HttpHandler {
-
+    private Matcher matcher = new Matcher();
     private List<Handler> handler;
 
     public Router() {
@@ -47,7 +47,7 @@ public class Router implements HttpHandler {
 
     private Handler getHandler(String uri, String method) {
         for (Handler h : handler) {
-            if (h.getPath().equals(uri) && h.getMethods().contains(method)) {
+            if (matcher.matches(uri, h.getPath()) && h.getMethods().contains(method)) {
                 return h;
             }
         }
