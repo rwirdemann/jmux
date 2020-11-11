@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Handler implements HttpHandler {
     public Handler(String path, HttpHandler httpHandler) {
         this.path = path;
         this.httpHandler = httpHandler;
+        this.methods = new ArrayList<>();
     }
 
     public void methods(String... methods) {
