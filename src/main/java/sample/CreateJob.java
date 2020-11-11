@@ -2,18 +2,15 @@ package sample;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import jmux.Http;
 
 import java.io.IOException;
-import java.io.OutputStream;
 
 public class CreateJob implements HttpHandler {
 
     public void handle(HttpExchange exchange) throws IOException {
-        OutputStream outputStream = exchange.getResponseBody();
         String response = "CreateJob";
-        exchange.sendResponseHeaders(200, response.length());
-        outputStream.write(response.getBytes());
-        outputStream.flush();
-        outputStream.close();
+        Http.sendResponse(exchange, 200, response.getBytes());
     }
+
 }
